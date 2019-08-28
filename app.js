@@ -1,3 +1,5 @@
+//PORT
+const PORT = process.env.port || 5000 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
@@ -51,7 +53,6 @@ app.use((req, res, next) => {
 app.use('/', require('./Routes/index'));    
 app.use('/user', require('./Routes/users'));
 
-//PORT
-const PORT = process.env.port || 5000 
+
 
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
