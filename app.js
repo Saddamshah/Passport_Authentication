@@ -32,7 +32,7 @@ app.use(session({
     secret: 'secret',
     resave: true,
     saveUninitialized: true,
-    store: new MongoStore({mongooseConnection: mongoose.connection})
+    store: new MongoStore({url: db})
   }));
 
 //Passport Middleware
