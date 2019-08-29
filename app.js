@@ -1,4 +1,3 @@
-//PORT
 const PORT = process.env.port || 5000 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
@@ -6,6 +5,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
@@ -31,7 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MongoStore({mongooseConnection: mongoose.connection})
   }));
 
 //Passport Middleware
